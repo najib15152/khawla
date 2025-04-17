@@ -4,11 +4,39 @@
   <meta charset="UTF-8" />
   <title>نموذج التسجيل</title>
   <style>
-    body { font-family: sans-serif; direction: rtl; padding: 20px; }
+    body {
+      font-family: sans-serif;
+      direction: rtl;
+      padding: 20px;
+      margin: 0;
+      background-image: url('https://www.mapexpress.ma/ar/wp-content/uploads/2024/06/ORMVA.png'); /* رابط الصورة هنا */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      width: fit-content;
+      max-width: 90%;
+    }
+
     .step { display: none; }
     .step.active { display: block; }
-    input { display: block; margin: 10px 0; padding: 8px; width: 300px; }
-    button { padding: 10px 20px; }
+    input {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 300px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
