@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>نموذج التسجيل</title>
+  <style>
+    body { font-family: sans-serif; direction: rtl; padding: 20px; }
+    .step { display: none; }
+    .step.active { display: block; }
+    input { display: block; margin: 10px 0; padding: 8px; width: 300px; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>التسجيل</h2>
+
+  <form id="registrationForm">
+    <div id="step1" class="step active">
+      <label>الاسم:</label>
+      <input type="text" id="firstName" required />
+
+      <label>النسب:</label>
+      <input type="text" id="lastName" required />
+
+      <button type="button" onclick="nextStep()">التالي</button>
+    </div>
+
+    <div id="step2" class="step">
+      <label>رقم الهاتف:</label>
+      <input type="text" id="phone" required />
+
+      <label>رقم البطاقة الوطنية:</label>
+      <input type="text" id="idNumber" required />
+
+      <button type="submit">إرسال</button>
+    </div>
+  </form>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyZ9xA8IYv1ZDOSLhxmCcPZ4Dkz32jakeSKeiGECS0FcEWRKKESkl1yxZP_ig86PaCmqg/exec";
+
+    function nextStep() {
+      document.getElementById("step1").classList.remove("active");
+      document.getElementById("step2").classList.add("active");
+    }
+
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const data = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        phone: document.getElementById("phone").value,
+        idNumber: document.getElementById("idNumber").value
+      };
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then(response => alert("تم إرسال البيانات بنجاح!"))
+      .catch(error => alert("حدث خطأ أثناء الإرسال."));
+    });
+  </script>
+</body>
+</html>
